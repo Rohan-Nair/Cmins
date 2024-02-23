@@ -1,4 +1,5 @@
 import './App.css'
+import CodeEditor from './components/CodeEditor'
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
           </a>
         </nav>
       </header>
+      <CodeEditor />
     </>
   )
 }
