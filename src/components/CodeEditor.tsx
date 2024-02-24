@@ -19,8 +19,8 @@ const CodeEditor = () => {
     }
 
     return (
-        <>
-            <div className="w-[50vw]">
+        <div className="flex flex-col md:flex-row">
+            <div className="w-[100vw] px-3 lg:w-[50vw]">
                 <div className="ml-2">
 
                     <LangSelect lang={language} onSelect={onSelectLanguage} />
@@ -37,10 +37,10 @@ const CodeEditor = () => {
                     onMount={onMount}
                 />
             </div>
-            <div className="w-[50vw] ">
+            <div className="w-[100vw] lg:w-[50vw] ">
                 <Output editorRef={editorRef} language={language} />
             </div>
-        </>
+        </div>
     )
 
 }

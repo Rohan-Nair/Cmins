@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { runCodeCall } from '../api/apis';
 import toast from 'react-hot-toast';
 import { Button, Spinner } from '@geist-ui/core';
+import { BeatLoader, FadeLoader } from 'react-spinners';
 
 type OutputProps = {
     editorRef: React.MutableRefObject<any>;
@@ -41,8 +42,12 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
                 {
                     loading ?
 
-                        <button onClick={runCode} className='text-[#80BA4F] border-2 border-[#80BA4F] h-7 w-24 flex justify-center items-center rounded font-bold' disabled><Spinner color="#80BA4F" style={{ color: "#80BA4F" }} /></button> :
-                        <button onClick={runCode} className='text-[#80BA4F] border-2 border-[#80BA4F] h-7 w-24 rounded font-bold'>Run</button>
+                        <button onClick={runCode} className='text-[#80BA4F] border-2 border-[#80BA4F] h-7 w-24 flex justify-center items-center rounded font-bold' disabled>
+                            <BeatLoader color='#80BA4F' />
+                        </button> :
+                        <button onClick={runCode} className='text-[#80BA4F] border-2 border-[#80BA4F] h-7 w-24 rounded font-bold'>
+                            Run
+                        </button>
 
                 }
             </div>
