@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { runCodeCall } from '../api/apis';
 import toast from 'react-hot-toast';
-import { Button, Spinner } from '@geist-ui/core';
-import { BeatLoader, FadeLoader } from 'react-spinners';
+import { BeatLoader } from 'react-spinners';
 
 type OutputProps = {
     editorRef: React.MutableRefObject<any>;
