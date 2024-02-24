@@ -3,7 +3,7 @@ import CodeEditor from './components/CodeEditor'
 function App() {
   return (
     <>
-      <header className='bg-[#1e0738] w-full flex justify-center py-3 px-2'>
+      <header className='bg-[#1e0738] border-b-[1px] h-16 w-full flex justify-center items-center py-3 px-2'>
         <nav>
           <a href="https://codingminutes.com/">
             <div>
@@ -27,7 +27,9 @@ function App() {
           </a>
         </nav>
       </header>
-      <CodeEditor />
+      <div className='flex bg-[#1e0738] py-2'>
+        <CodeEditor />
+      </div>
     </>
   )
 }
