@@ -50,11 +50,26 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
 
                 }
             </div>
-            <textarea
-                className={`bg-[#252526] w-full h-[80vh] bg-transparent resize-none p-2 ${wrongCode ? 'text-red-500 border border-red-500' : 'text-[#80BA4F] border-none'}`}
+            {/* <textarea
+                className={`bg-[#18181a] w-full h-[80vh] bg-transparent resize-none p-2 ${wrongCode ? 'text-red-500 border border-red-500' : 'text-[#80BA4F] border-none'}`}
                 readOnly
                 value={opValue}
-            />
+            /> */}
+
+            {
+                wrongCode ?
+                    <textarea
+                        className={`bg-[#18181a] w-full h-[80vh] bg-transparent resize-none p-2 text-red-500 border border-red-500`}
+                        readOnly
+                        value={opValue}
+                    /> :
+                    <textarea
+                        className={`bg-[#18181a] w-full h-[80vh] bg-transparent resize-none p-2 text-[#80BA4F] border-none`}
+                        readOnly
+                        value={opValue}
+                    />
+            }
+
         </div >
     )
 }
