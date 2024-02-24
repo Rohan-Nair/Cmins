@@ -10,6 +10,7 @@ type OutputProps = {
 
 const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
     const [opValue, setOpValue] = useState<string>("Output will be shown here...");
+    const [ipValue, setIpValue] = useState<string>("");
     const [loading, setLoading] = useState<Boolean>(false);
     const [wrongCode, setWrongCode] = useState(false);
     const runCode = async () => {
@@ -17,9 +18,15 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
         if (!code) return;
         try {
             setLoading(true);
-            const { run } = await runCodeCall(language, code);
+            const { run, compile } = await runCodeCall(language, code, ipValue);
+            if (run.stderr) {
+                setWrongCode(true);
+                setOpValue(compile.stderr);
+                return;
+            } else {
+                setWrongCode(false);
+            }
             setOpValue(run.output.split('\n').join('\n'));
-            run.stderr ? setWrongCode(true) : setWrongCode(false);
         } catch (e) {
             toast.error('Something went wrong!', {
                 style: {
@@ -37,6 +44,21 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
 
     return (
         <div className='h-full mx-2 rounded-md py-2 px-2'>
+            <p className='font-bold text-[#80BA4F] pb-1'>Input</p>
+
+            <textarea
+                className={`bg-[#1e1e1e] w-full h-[35.5vh] resize-none border-none focus:outline-none p-2 text-[#80BA4F] placeholder:text-[#80BA4F]`}
+                placeholder='Input goes here'
+                value={ipValue}
+                onChange={(e) => setIpValue(e.target.value)}
+            />
+
+
+            <textarea
+                className={`bg-[#1e1e1e] w-full h-[40vh] resize-none p-2 focus:outline-none ${wrongCode ? 'text-red-500 border border-red-500' : 'text-[#80BA4F] border-none'}`}
+                readOnly
+                value={opValue}
+            />
             <div className='mb-2 flex items-center gap-2 '>
                 {
                     loading ?
@@ -50,11 +72,8 @@ const Output: React.FC<OutputProps> = ({ editorRef, language }) => {
 
                 }
             </div>
-            <textarea
-                className={`bg-[#1e1e1e] w-full h-[80vh] resize-none p-2 ${wrongCode ? 'text-red-500 border border-red-500' : 'text-[#80BA4F] border-none'}`}
-                readOnly
-                value={opValue}
-            />
+
+
         </div >
     )
 }

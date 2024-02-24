@@ -19,7 +19,7 @@ const CodeEditor = () => {
     }
 
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col lg:flex-row">
             <div className="w-[100vw] px-3 lg:w-[50vw]">
                 <div className="ml-2">
 
