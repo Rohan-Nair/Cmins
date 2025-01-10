@@ -6,9 +6,9 @@ function App() {
       <header className='bg-[#1e0738] border-b-[1px] h-10 md:h-16 w-full flex justify-center items-center py-3 px-2'>
         <nav>
           <a href="https://codingminutes.com/">
-            <div>
-              SHRIGANESH CODES
-            </div>
+            <p className='text-white text-4xl bg-black border border-white rounded-md'>
+              SHRIGANESH (the JODD) CODES
+            </p>
           </a>
         </nav>
       </header>
